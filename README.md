@@ -171,6 +171,8 @@ Detalhando cada etapa:
 
 > 💡 O Codespace já vem com o **Java 21 (JDK)** e todas as extensões do VS Code pré-configuradas, incluindo o **Test Runner for Java** que habilita a view **Testing**.
 
+> ⏱️ Depois que o Codespace abrir, a importação do projeto Java pode levar mais **1 a 3 minutos**. A view **Testing** normalmente só aparece preenchida depois que essa importação termina.
+
 ### Passo 3 — Verificar o ambiente
 
 Abra o terminal integrado (`` Ctrl + ` ``) e execute:
@@ -198,12 +200,22 @@ A extensão **Test Runner for Java** permite executar testes de forma visual:
 
 Se a view **Testing** não aparecer automaticamente no Codespaces:
 
-1. Aguarde a importação do projeto Java terminar.
+1. Aguarde a importação do projeto Java terminar. Em um Codespace recém-criado, isso pode levar alguns minutos mesmo após o terminal já estar disponível.
 2. Verifique se o workspace abriu em modo **Standard** para Java.
 3. Abra a Paleta de Comandos e execute **Java: Import Java Projects in Workspace**.
 4. Se ainda não aparecer, execute **Java: Clean Java Language Server Workspace** e recarregue a janela.
 
 > O workspace já está configurado para abrir em modo **Standard** e preferir o Maven Wrapper. Isso é necessário porque o modo **LightWeight** não resolve dependências Maven e pode impedir que a árvore de testes seja exibida.
+
+### Troubleshooting visual da view Testing
+
+Use estes sinais visuais para verificar se o ambiente Java terminou de carregar:
+
+1. **Barra de status do VS Code**: se o Java ainda estiver inicializando ou importando dependências, aguarde até a atividade terminar.
+2. **Modo do workspace Java**: confirme que o ambiente não ficou em **LightWeight**. O projeto deve abrir em **Standard**.
+3. **Explorer / Java Projects**: o `pom.xml` deve ser reconhecido como projeto Maven importado, não apenas como um arquivo solto.
+4. **Classe de teste**: ao abrir `ContaTest.java`, os ícones de executar/debug do Java devem aparecer acima da classe e dos métodos de teste.
+5. **Activity Bar**: a aba **Testing** pode existir antes da descoberta dos testes, mas a árvore só será populada depois da importação do projeto.
 
 Você também pode executar testes pelo terminal:
 
