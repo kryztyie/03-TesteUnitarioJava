@@ -55,6 +55,8 @@ public class Conta {
     public void depositar(double valor) {
     if (valor <= 0)
         throw new IllegalArgumentException("O valor deve ser maior que zero.");
+    if (!ativa)
+        throw new IllegalStateException("A conta está inativa.");
 
     this.saldo += valor;
 }
@@ -93,7 +95,11 @@ public class Conta {
      *   - A propriedade ativa deve ser alterada para false.
      */
     public void encerrar() {
-        // TODO: Implemente usando TDD
-        throw new UnsupportedOperationException();
-    }
+    if (!ativa)
+        throw new IllegalStateException("A conta já está inativa.");
+    if (saldo != 0)
+        throw new IllegalStateException("A conta possui saldo.");
+
+    this.ativa = false;
+}
 }
