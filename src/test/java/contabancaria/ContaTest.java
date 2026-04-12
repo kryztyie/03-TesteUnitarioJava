@@ -93,10 +93,8 @@ class ContaTest {
 void depositar_ValorValido_AtualizaSaldo() {
     // Arrange
     var conta = new Conta("Maria", 100);
-
     // Act
     conta.depositar(50);
-
     // Assert
     assertEquals(150, conta.getSaldo());
 }
