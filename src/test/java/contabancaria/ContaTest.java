@@ -105,6 +105,12 @@ void depositar_ValorZero_LancaIllegalArgumentException() {
     assertThrows(IllegalArgumentException.class, () -> conta.depositar(0));
 }
 
+@Test
+void depositar_ContaInativa_LancaIllegalStateException() {
+    var conta = new Conta("Maria", 0);
+    conta.encerrar();
+    assertThrows(IllegalStateException.class, () -> conta.depositar(50));
+}
 
     // =======================================================
     //  Testes para sacar
