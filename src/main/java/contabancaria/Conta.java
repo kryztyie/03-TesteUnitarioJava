@@ -70,6 +70,13 @@ public class Conta {
      *   - O saldo deve ser atualizado corretamente.
      */
 public void sacar(double valor) {
+    if (valor <= 0)
+        throw new IllegalArgumentException("O valor deve ser maior que zero.");
+    if (!ativa)
+        throw new IllegalStateException("A conta está inativa.");
+    if (valor > saldo)
+        throw new IllegalStateException("Saldo insuficiente.");
+
     this.saldo -= valor;
 }
 
