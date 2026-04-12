@@ -124,6 +124,12 @@ void sacar_ValorValido_AtualizaSaldo() {
     assertEquals(50, conta.getSaldo());
 }
 
+@Test
+void sacar_SaldoInsuficiente_LancaIllegalStateException() {
+    var conta = new Conta("Maria", 100);
+    assertThrows(IllegalStateException.class, () -> conta.sacar(200));
+}
+
     // =======================================================
     //  Testes para transferir
     //  Sugestão de testes:
