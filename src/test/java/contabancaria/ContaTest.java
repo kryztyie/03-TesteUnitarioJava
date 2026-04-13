@@ -130,6 +130,12 @@ void sacar_SaldoInsuficiente_LancaIllegalStateException() {
     assertThrows(IllegalStateException.class, () -> conta.sacar(200));
 }
 
+@Test
+void sacar_ValorZero_LancaIllegalArgumentException() {
+    var conta = new Conta("Maria", 100);
+    assertThrows(IllegalArgumentException.class, () -> conta.sacar(0));
+}
+
     // =======================================================
     //  Testes para transferir
     //  Sugestão de testes:
