@@ -170,6 +170,13 @@ void transferir_SaldoInsuficiente_LancaIllegalStateException() {
     assertThrows(IllegalStateException.class, () -> origem.transferir(destino, 200));
 }
 
+@Test
+void transferir_ValorNegativo_LancaIllegalArgumentException() {
+    var origem = new Conta("Maria", 100);
+    var destino = new Conta("João", 100);
+    assertThrows(IllegalArgumentException.class, () -> origem.transferir(destino, -50));
+}
+
     // =======================================================
     //  Testes para encerrar
     //  Sugestão de testes:
