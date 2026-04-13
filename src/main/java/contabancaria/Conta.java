@@ -91,8 +91,6 @@ public void sacar(double valor) {
     public void transferir(Conta destino, double valor) {
     if (valor <= 0)
         throw new IllegalArgumentException("O valor deve ser maior que zero.");
-    if (!ativa)
-        throw new IllegalStateException("A conta origem está inativa.");
     if (!destino.ativa)
         throw new IllegalStateException("A conta destino está inativa.");
     if (valor > saldo)
@@ -110,11 +108,6 @@ public void sacar(double valor) {
      *   - A propriedade ativa deve ser alterada para false.
      */
     public void encerrar() {
-    if (!ativa)
-        throw new IllegalStateException("A conta já está inativa.");
-    if (saldo != 0)
-        throw new IllegalStateException("A conta possui saldo.");
-
-    this.ativa = false;
+    throw new UnsupportedOperationException();
 }
 }
