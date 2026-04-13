@@ -149,16 +149,19 @@ void sacar_ContaInativa_LancaIllegalStateException() {
     assertThrows(IllegalStateException.class, () -> conta.sacar(50));
 }
 
-    // =======================================================
-    //  Testes para transferir
-    //  Sugestão de testes:
-    //    - Transferência válida atualiza saldo de ambas as contas
-    //    - Transferência com saldo insuficiente lança exceção
-    //    - Transferência com valor zero/negativo lança exceção
-    //    - Transferência com conta origem inativa lança exceção
-    //    - Transferência com conta destino inativa lança exceção
-    // =======================================================
+@Test
+void transferir_ValorValido_AtualizaSaldoDeAmbasContas() {
+    // Arrange
+    var origem = new Conta("Maria", 200);
+    var destino = new Conta("João", 100);
 
+    // Act
+    origem.transferir(destino, 50);
+
+    // Assert
+    assertEquals(150, origem.getSaldo());
+    assertEquals(150, destino.getSaldo());
+}
 
     // =======================================================
     //  Testes para encerrar
