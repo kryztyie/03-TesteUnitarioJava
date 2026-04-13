@@ -192,13 +192,17 @@ void transferir_ContaDestinoInativa_LancaIllegalStateException() {
     destino.encerrar();
     assertThrows(IllegalStateException.class, () -> origem.transferir(destino, 50));
 }
-    // =======================================================
-    //  Testes para encerrar
-    //  Sugestão de testes:
-    //    - Encerrar conta com saldo zero funciona
-    //    - Encerrar conta com saldo lança IllegalStateException
-    //    - Encerrar conta já inativa lança IllegalStateException
-    //    - Conta encerrada tem isAtiva() == false
-    // =======================================================
+
+@Test
+void encerrar_ContaComSaldoZero_EncerraComSucesso() {
+    // Arrange
+    var conta = new Conta("Maria", 0);
+
+    // Act
+    conta.encerrar();
+
+    // Assert
+    assertTrue(!conta.isAtiva());
+}
 
 }
