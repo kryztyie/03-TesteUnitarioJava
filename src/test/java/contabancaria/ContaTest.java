@@ -184,6 +184,14 @@ void transferir_ContaOrigemInativa_LancaIllegalStateException() {
     origem.encerrar();
     assertThrows(IllegalStateException.class, () -> origem.transferir(destino, 50));
 }
+
+@Test
+void transferir_ContaDestinoInativa_LancaIllegalStateException() {
+    var origem = new Conta("Maria", 100);
+    var destino = new Conta("João", 0);
+    destino.encerrar();
+    assertThrows(IllegalStateException.class, () -> origem.transferir(destino, 50));
+}
     // =======================================================
     //  Testes para encerrar
     //  Sugestão de testes:
