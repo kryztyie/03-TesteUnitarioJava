@@ -205,4 +205,9 @@ void encerrar_ContaComSaldoZero_EncerraComSucesso() {
     assertTrue(!conta.isAtiva());
 }
 
+@Test
+void encerrar_ContaComSaldo_LancaIllegalStateException() {
+    var conta = new Conta("Maria", 100);
+    assertThrows(IllegalStateException.class, () -> conta.encerrar());
+}
 }
