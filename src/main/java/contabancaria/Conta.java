@@ -109,6 +109,11 @@ public void sacar(double valor) {
      *   - A propriedade ativa deve ser alterada para false.
      */
     public void encerrar() {
-    throw new UnsupportedOperationException();
+    if (!ativa)
+        throw new IllegalStateException("A conta já está inativa.");
+    if (saldo != 0)
+        throw new IllegalStateException("A conta possui saldo.");
+
+    this.ativa = false;
 }
 }
