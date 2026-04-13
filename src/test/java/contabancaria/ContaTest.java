@@ -217,4 +217,11 @@ void encerrar_ContaJaInativa_LancaIllegalStateException() {
     conta.encerrar();
     assertThrows(IllegalStateException.class, () -> conta.encerrar());
 }
+
+@Test
+void encerrar_ContaEncerrada_IsAtivaFalse() {
+    var conta = new Conta("Maria", 0);
+    conta.encerrar();
+    assertTrue(!conta.isAtiva());
+}
 }

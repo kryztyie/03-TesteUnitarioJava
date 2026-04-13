@@ -113,7 +113,5 @@ public void sacar(double valor) {
         throw new IllegalStateException("A conta já está inativa.");
     if (saldo != 0)
         throw new IllegalStateException("A conta possui saldo.");
-
-    this.ativa = false;
 }
 }
