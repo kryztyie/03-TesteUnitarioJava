@@ -142,6 +142,13 @@ void sacar_ValorNegativo_LancaIllegalArgumentException() {
     assertThrows(IllegalArgumentException.class, () -> conta.sacar(-10));
 }
 
+@Test
+void sacar_ContaInativa_LancaIllegalStateException() {
+    var conta = new Conta("Maria", 0);
+    conta.encerrar();
+    assertThrows(IllegalStateException.class, () -> conta.sacar(50));
+}
+
     // =======================================================
     //  Testes para transferir
     //  Sugestão de testes:
