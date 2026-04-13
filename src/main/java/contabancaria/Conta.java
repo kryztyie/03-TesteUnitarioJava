@@ -95,6 +95,8 @@ public void sacar(double valor) {
         throw new IllegalStateException("A conta origem está inativa.");
     if (!destino.ativa)
         throw new IllegalStateException("A conta destino está inativa.");
+    if (valor > saldo)
+        throw new IllegalStateException("Saldo insuficiente.");
 
     this.saldo -= valor;
     destino.saldo += valor;
