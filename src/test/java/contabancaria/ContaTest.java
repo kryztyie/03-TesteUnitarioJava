@@ -163,6 +163,13 @@ void transferir_ValorValido_AtualizaSaldoDeAmbasContas() {
     assertEquals(150, destino.getSaldo());
 }
 
+@Test
+void transferir_SaldoInsuficiente_LancaIllegalStateException() {
+    var origem = new Conta("Maria", 100);
+    var destino = new Conta("João", 100);
+    assertThrows(IllegalStateException.class, () -> origem.transferir(destino, 200));
+}
+
     // =======================================================
     //  Testes para encerrar
     //  Sugestão de testes:
