@@ -136,6 +136,12 @@ void sacar_ValorZero_LancaIllegalArgumentException() {
     assertThrows(IllegalArgumentException.class, () -> conta.sacar(0));
 }
 
+@Test
+void sacar_ValorNegativo_LancaIllegalArgumentException() {
+    var conta = new Conta("Maria", 100);
+    assertThrows(IllegalArgumentException.class, () -> conta.sacar(-10));
+}
+
     // =======================================================
     //  Testes para transferir
     //  Sugestão de testes:
